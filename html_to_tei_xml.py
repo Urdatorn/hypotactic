@@ -1,3 +1,78 @@
+"""
+TEI XML Formatting Scheme Summary
+==================================
+
+This script converts structured Ancient Greek poetic texts from HTML into TEI XML format. 
+The extraction process includes metadata, line structures, word boundaries, and syllable metrics.
+
+1. **Global Metadata (Book Level)**
+------------------------------------
+Extracted from the first `<div class="poem">` with relevant `data-*` attributes:
+- `<global_class>`: Captures all class attributes (e.g., `poem elegy w3-card-2`)
+- `<metre>`: Extracts the main metre from `data-metre`
+- `<author>`: Extracts the author's name from `data-author`
+- `<work>`: Extracts the work title from `data-work`
+- `<book/>`: Self-closing if no value is specified in `data-book`
+
+Example:
+<div type="book">
+  <global_class>poem elegy w3-card-2</global_class>
+  <metre>elegy</metre>
+  <author>Callimachus</author>
+  <work>Epigrams</work>
+  <book/>
+</div>
+
+2. **Poem Metadata (Poem Level)**
+----------------------------------
+Extracted from `<div class="poem_header">` and its children:
+- `<poem_number>`: Extracted from `<div class="poem_number">`
+- `<work_title>`: Extracted from `<div class="work_title">`
+- `<poem_meter>`: Extracted from `<div class="poem_meter">`
+- `<poem_title>`: If present; self-closing if empty
+- `<citation>`: Extracted from `<div class="citation">`
+
+Example:
+<div type="poem">
+  <poem_number>1</poem_number>
+  <work_title>Callimachus, Epigrams</work_title>
+  <poem_meter>elegy</poem_meter>
+  <poem_title/>
+  <citation>A.P. vii. 89, Diog. Laert. i. 79 f.</citation>
+</div>
+
+3. **Line and Metrical Structure**
+-----------------------------------
+Each `<div class="line ...">` generates a `<l>` element:
+- Attribute `n`: Combines `data-before` and `data-number` (e.g., `1.1`)
+- Attribute `metre`: Extracted from the remaining `class` attributes of the `<div class="line">`
+
+Example:
+<l n="1.1" metre="hexameter fifth">
+</l>
+
+4. **Word and Syllable Structure**
+-----------------------------------
+Each `<span class="word">` generates a `<w>` element.
+Each `<span class="syll long|short">` generates a `<syll>` element:
+- Attribute `type`: Extracted from the syllable class (`long` or `short`)
+- Text: Extracted from the syllable’s inner content
+
+Example:
+<w>
+  <syll type="long">ξεῖ</syll>
+  <syll type="short">νος</syll>
+</w>
+
+5. **Additional Notes**
+-----------------------
+- **Whitespace Preservation:** All spacing between words is faithfully preserved.
+- **Empty Fields:** Self-closing elements are used if attributes or tags have no content.
+- **TEI Header and File Title:** Automatically extracted from `data-author` and `data-work`, 
+  defaulting to the input file name if either is missing.
+
+"""
+
 import os
 from bs4 import BeautifulSoup
 import xml.etree.ElementTree as ET
