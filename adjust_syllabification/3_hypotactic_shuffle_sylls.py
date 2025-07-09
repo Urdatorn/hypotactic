@@ -2,11 +2,12 @@
 Updating human scanned Ancient Greek verse to use my machine syllabification,
 by reshuffling coda and onset characters between syllables (without changing their weight).
 
+The original syllabification, e.g.
+
 [ὦ] [παῖ,] {τέ}[λος] [μὲν] [Ζεὺς] {ἔ}[χει] {βα}[ρύ]{κτυ}[πος]
 [πάν][των] {ὅσ᾽} [ἔ]{στι,} [καὶ] {τί}[θησ᾽] {ὅ}[κῃ] {θέ}[λει·]
 [ᾗ] [δὴ] {βο}[τὰ] {ζό}[ω]{μεν,} [οὐ]{δὲν} [εἰ]{δό}[τες]
 {ὅ}[κως] {ἕ}[κα]{στον} [ἐ]{κτε}[λευ][τή][σει] {θε}[ός.]
-
 
 should become:
 

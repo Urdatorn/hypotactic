@@ -1,0 +1,5 @@
+TODO
+
+Should probably just skip muta cum liquida-sylls in the macron extraction. Too many bugs.
+Also need to make sure diphthongs do not get macronized, e.g. φά^ει^
+also make it a set.

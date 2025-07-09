@@ -4,7 +4,7 @@ An effort to make David Chamberlain's metrically marked-up corpus of Ancient Gre
 
 ## Syllabification
 
-My main contribution is to have adjusted the syllabification to comply with standard linguistic accounts of Ancient Greek. Scripts to perform this adjustment can be found in the `adjust_syllabification` folder. A single file containing 60660 adjusted lines can be found at [here](adjust_syllabification/hypotactic_all_shuffled_cleaned.txt).
+My main contribution is to have adjusted the syllabification to comply with standard linguistic accounts of Ancient Greek. Scripts to perform this adjustment can be found in the `adjust_syllabification` folder. A single file containing 60660 adjusted lines can be found [here](adjust_syllabification/hypotactic_all_shuffled_cleaned.txt).
 
 **Caveat emptor:** The syllabification has run with heterosyllabic mute-with-liquid-or-nasal combinations across the board. This works for tragic drama, but epic use is more varied, and many lines thus have bugs, which should be kept in mind.
  
